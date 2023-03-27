@@ -24,7 +24,14 @@ const client = new MahasiswaService(
   grpc.credentials.createInsecure()
 )
 
-client.getAll({}, (error, mahasiswa) => {
-  if(!error) throw error
-    console.log(mahasiswa);
-})
+// client.getAll({}, (error, mahasiswa) => {
+//   if(!error) throw error
+//     console.log(mahasiswa);
+// })
+
+setTimeout(() => {
+  client.getAll({}, (error, response) => {
+    if (error) throw error;
+    console.log(response);
+  });
+}, 1000);
