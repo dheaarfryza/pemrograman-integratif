@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+// Object 
+
+message Book {
+  string id = 1;
+  string nama = 2;
+  string judul = 3;
+  int64 rate = 4;
+}
+
+message BookList {
+  repeated Book book = 1;
+}
+
+message BookId {
+  string id = 1;
+}
+
+message Empty {}
+
+// Service 
+service BookService {
+  // Create 
+  rpc AddBook (Book) returns (Book) {}
+  // Read 
+  rpc GetAll (Empty) returns (BookList) {}
+  rpc GetBook (BookId) returns (Book) {}
+  // Update
+  rpc EditBook (Book) returns (Book) {}
+  // Delete
+  rpc DeleteBook (BookId) returns (Empty) {}
+}
